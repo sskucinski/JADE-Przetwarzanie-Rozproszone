@@ -12,5 +12,7 @@ public interface CarsBase {
 	public static final String CAPACITY = "Capacity";
 	public static final String HORSEPOWER = "HorsePower";
 	public static final String MILEAGE = "MileAge";
+	
+	public static final String CREDITCARD = "CreditCard";
 
 }
