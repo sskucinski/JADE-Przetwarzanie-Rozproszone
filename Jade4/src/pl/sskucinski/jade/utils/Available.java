@@ -26,14 +26,14 @@ public class Available implements Predicate {
 	
 	// Sets
 	
-	public AID setAID (AID val) {
+	public void setAID (AID val) {
 		
-		return aid = val;
+		aid = val;
 	}
 	
-	public AutoMobile setAuto( AutoMobile auto ) {
+	public void setAuto( AutoMobile auto ) {
 		
-		return am = auto;
+		am = auto;
 	}
 	
 	

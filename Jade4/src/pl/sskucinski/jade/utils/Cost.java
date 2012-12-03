@@ -19,9 +19,9 @@ public class Cost implements Predicate {
 	
 	// Sets
 	
-	public int setPrize( int value ) {
+	public void setPrize( int value ) {
 		
-		return prize = value;
+		prize = value;
 	}
 
 }

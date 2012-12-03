@@ -27,19 +27,19 @@ public class CreditCard {
 	
 	// Sets
 	
-	public String setType( String txt ) {
+	public void setType( String txt ) {
 		
-		return type = txt; 
+		type = txt; 
 	}
 	
-	public int setNumber( int value ) {
+	public void setNumber( int value ) {
 		
-		return number = value;
+		number = value;
 	}
 	
-	public Date setDate ( Date val ) {
+	public void setDate ( Date val ) {
 		
-		return date = val;
+		date = val;
 	}
 
 }

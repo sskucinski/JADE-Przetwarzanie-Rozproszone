@@ -13,9 +13,9 @@ public class AutoMobile {
 	
 	// Sets
 	
-	public int setSerial( int value ) {
+	public void setSerial( int value ) {
 		
-		return serialID = value;
+		serialID = value;
 	}
 
 }

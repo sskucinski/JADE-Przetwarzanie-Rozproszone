@@ -31,24 +31,24 @@ public class Car extends AutoMobile{
 	
 	// Sets
 	
-	public String setBrand( String txt ) {
+	public void setBrand( String txt ) {
 		
-		return brand = txt;
+		brand = txt;
 	}
 	
-	public String setModel( String txt ) {
+	public void setModel( String txt ) {
 		
-		return model = txt;
+		model = txt;
 	}
 	
-	public String setColor( String txt ) {
+	public void setColor( String txt ) {
 		
-		return color = txt;
+		color = txt;
 	}
 	
-	public int setYear( int value ) {
+	public void setYear( int value ) {
 		
-		return year = value;
+		year = value;
 	}
 
 }

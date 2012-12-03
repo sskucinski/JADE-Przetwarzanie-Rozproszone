@@ -25,19 +25,19 @@ public class Engine extends AutoMobile{
 	
 	// Sets
 	
-	public int setCapacity( int value ) {
+	public void setCapacity( int value ) {
 		
-		return capacity = value;
+		capacity = value;
 	}
 	
-	public int setHorsePower( int value ) {
+	public void setHorsePower( int value ) {
 		
-		return horsepower = value;
+		horsepower = value;
 	}
 	
-	public int setMileAge( int value ) {
+	public void setMileAge( int value ) {
 		
-		return mileage = value;
+		mileage = value;
 	}
 
 }
