@@ -32,7 +32,7 @@ public class CarDealerAgent extends Agent implements CarsBase {
 		
 	}
 	
-	public void agentReply(ACLMessage msg) {
+	public void agentBadReply(ACLMessage msg) {
 		
 		try {
 	         java.io.Serializable content = msg.getContentObject();
@@ -83,7 +83,7 @@ public class CarDealerAgent extends Agent implements CarsBase {
 						
 					} else {
 						
-						agentReply(msg);
+						agentBadReply(msg);
 						break;
 						
 					}
