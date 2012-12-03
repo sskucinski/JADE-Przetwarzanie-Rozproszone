@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestsList>
+    <Test name="1st test" skip="false" >
+        <TestClassName>test.response.tests.TestPing</TestClassName>
+        <WhatTest>Tests sending and receiving a message to/from an agent on a platform.</WhatTest>
+        <HowWorkTest>An agent is created on a platform and then a ping message is sent to it</HowWorkTest>
+        <WhenTestPass>The test passes if the agent on the platform receives the ping message and replies correctly and no exception is fired.</WhenTestPass>
+    </Test>
+</TestsList>
