@@ -7,7 +7,7 @@ import jade.wrapper.AgentController;
 import test.common.Test;
 import test.common.TestException;
 
-public class TestDecideAgent extends Test {
+public class TestOfferAgent extends Test {
 
 	/**
 	 * 
