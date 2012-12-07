@@ -1,4 +1,4 @@
-package examples.PingAgent;
+package examples.DecideAgent;
 
 import java.util.Random;
 
