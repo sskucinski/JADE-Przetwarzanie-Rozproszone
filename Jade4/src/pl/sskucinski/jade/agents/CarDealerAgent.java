@@ -117,7 +117,7 @@ public class CarDealerAgent extends Agent implements CarsBase {
 				case (ACLMessage.REQUEST):
 					System.out.println("Request from " + msg.getSender().getLocalName());
 					
-					if (content instanceof pl.sskucinski.jade.utils.Available) {
+					if (content instanceof Available) {
 						
 						addBehaviour(new HandleAvailable(myAgent, msg));
 						
@@ -160,7 +160,7 @@ public class CarDealerAgent extends Agent implements CarsBase {
 			try{
 				
 				ContentElement content = getContentManager().extractContent(request);
-				pl.sskucinski.jade.utils.Available av = (pl.sskucinski.jade.utils.Available) ((Action)content).getAction();
+				Available av = (Available) ((Action)content).getAction();
 				
 			} catch (Exception ex) {
 				ex.printStackTrace();
