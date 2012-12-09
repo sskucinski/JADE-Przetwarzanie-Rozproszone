@@ -11,12 +11,12 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.core.behaviours.SequentialBehaviour;
 import jade.domain.DFService;
-import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import pl.sskucinski.jade.interfaces.CarsBase;
 import pl.sskucinski.jade.ontology.CarOntology;
+import pl.sskucinski.jade.utils.AutoMobile;
 import pl.sskucinski.jade.utils.Available;
 import pl.sskucinski.jade.utils.Rent;
 
@@ -161,6 +161,10 @@ public class CarDealerAgent extends Agent implements CarsBase {
 				
 				ContentElement content = getContentManager().extractContent(request);
 				Available av = (Available) ((Action)content).getAction();
+				AutoMobile am = new AutoMobile();
+				
+				av.setAID(getAID());
+				//am.setSerial();
 				
 			} catch (Exception ex) {
 				ex.printStackTrace();

@@ -14,5 +14,20 @@ public interface CarsBase {
 	public static final String CAPACITY = "Capacity";
 	public static final String HORSEPOWER = "HorsePower";
 	public static final String MILEAGE = "MileAge";
+	
+	public static final String AVAILABLE = "AvailableClass";
+	
+	public static final String COST = "CostClass";
+	public static final String PRIZE = "Prize";
+	
+	public static final String AUTOMOBILE = "AutoMobileClass";
+	public static final String SERIALID = "SerialID";
+	
+	public static final String CREDITCARD = "CreditCardClass";
+	public static final String TYPE = "Type";
+	public static final String NUMBER = "Number";
+	public static final String DATE = "Date";
+	
+	public static final String RENT = "RentClass";
 
 }
