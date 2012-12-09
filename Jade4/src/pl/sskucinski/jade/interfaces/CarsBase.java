@@ -2,6 +2,8 @@ package pl.sskucinski.jade.interfaces;
 
 public interface CarsBase {
 	
+	public static final String SERVER_AGENT = "ServerAgent";
+	
 	public static final String CAR = "CarClass";
 	public static final String BRAND = "Brand";
 	public static final String MODEL = "Model";

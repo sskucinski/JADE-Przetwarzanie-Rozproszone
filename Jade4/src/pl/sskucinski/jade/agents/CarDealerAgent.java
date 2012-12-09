@@ -9,7 +9,11 @@ import jade.content.onto.basic.Action;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.OneShotBehaviour;
+import jade.core.behaviours.SequentialBehaviour;
+import jade.domain.DFService;
 import jade.domain.FIPAException;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import pl.sskucinski.jade.interfaces.CarsBase;
 import pl.sskucinski.jade.ontology.CarOntology;
@@ -29,7 +33,10 @@ public class CarDealerAgent extends Agent implements CarsBase {
 		getContentManager().registerLanguage(codec);
 		getContentManager().registerOntology(ontology);
 		
-		
+		SequentialBehaviour sb = new SequentialBehaviour();
+	    sb.addSubBehaviour(new RegisterIn(this));
+	    sb.addSubBehaviour(new ReceiveMessage(this));
+	    addBehaviour(sb);
 	}
 	
 	public void agentBadReply(ACLMessage msg) {
@@ -46,6 +53,43 @@ public class CarDealerAgent extends Agent implements CarsBase {
 	      }
 		
 	}
+	
+	// Behavior of register in
+	
+	 class RegisterIn extends OneShotBehaviour {
+		 
+		RegisterIn(Agent a) {
+	         super(a);
+	    }
+
+		@Override
+		public void action() {
+			
+			ServiceDescription sd = new ServiceDescription();
+			sd.setType(SERVER_AGENT);
+	        sd.setName(getName());
+	        sd.setOwnership("Test0332");
+	        DFAgentDescription dfd = new DFAgentDescription();
+	        dfd.setName(getAID());
+	        dfd.addServices(sd);
+	        try {
+	            DFAgentDescription[] dfds = DFService.search(myAgent, dfd);
+	            if (dfds.length > 0 ) {
+	               DFService.deregister(myAgent, dfd);
+	            }
+	            DFService.register(myAgent, dfd);
+	            System.out.println(getLocalName() + " is ready.");
+	         }
+	         catch (Exception ex) {
+	            System.out.println("Failed registering! Shutting down...");
+	            ex.printStackTrace();
+	            doDelete();
+	         }
+		}
+		 
+		 
+		 
+	 }
 	
 	// Behavior of receiving messages
 	
@@ -73,7 +117,7 @@ public class CarDealerAgent extends Agent implements CarsBase {
 				case (ACLMessage.REQUEST):
 					System.out.println("Request from " + msg.getSender().getLocalName());
 					
-					if (content instanceof Available) {
+					if (content instanceof pl.sskucinski.jade.utils.Available) {
 						
 						addBehaviour(new HandleAvailable(myAgent, msg));
 						
@@ -113,7 +157,14 @@ public class CarDealerAgent extends Agent implements CarsBase {
 
 		@Override
 		public void action() {
-			// TODO Auto-generated method stub
+			try{
+				
+				ContentElement content = getContentManager().extractContent(request);
+				pl.sskucinski.jade.utils.Available av = (pl.sskucinski.jade.utils.Available) ((Action)content).getAction();
+				
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
 			
 		}
 		
@@ -132,7 +183,15 @@ public class CarDealerAgent extends Agent implements CarsBase {
 
 		@Override
 		public void action() {
-			// TODO Auto-generated method stub
+			
+			try{
+				
+				ContentElement content = getContentManager().extractContent(request);
+				Rent rt = (Rent) ((Action)content).getAction();
+				
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
 			
 		}
 		
