@@ -4,42 +4,38 @@ import java.util.Date;
 
 public class CreditCard {
 	
-	public static String type;
-	public static int number;
-	public static Date date;
+	private String type;
+	private int number;
+	private Date date;
 	
-	// Gets
-	
-	public String getType() {
-		
-		return type;
+	public CreditCard(String type, int number, Date expDate) {
+		this.setType(type);
+		this.setDate(expDate);
+		this.setNumber(number);
 	}
-	
+
 	public int getNumber() {
-		
 		return number;
 	}
-	
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public Date getDate() {
-		
 		return date;
 	}
-	
-	// Sets
-	
-	public void setType( String txt ) {
-		
-		type = txt; 
-	}
-	
-	public void setNumber( int value ) {
-		
-		number = value;
-	}
-	
-	public void setDate ( Date val ) {
-		
-		date = val;
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 }

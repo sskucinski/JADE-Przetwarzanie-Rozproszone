@@ -4,6 +4,10 @@ public class AutoMobile {
 	
 	int serialID;
 	
+	public AutoMobile(Integer id) {
+		serialID = id;
+	}
+	
 	// Gets
 	
 	public int getSerial() {

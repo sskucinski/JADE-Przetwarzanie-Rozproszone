@@ -11,6 +11,7 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.core.behaviours.SequentialBehaviour;
 import jade.domain.DFService;
+import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
@@ -34,7 +35,7 @@ public class CarDealerAgent extends Agent implements CarsBase {
 		getContentManager().registerOntology(ontology);
 		
 		SequentialBehaviour sb = new SequentialBehaviour();
-	    sb.addSubBehaviour(new RegisterIn(this));
+	    sb.addSubBehaviour(new Register(this));
 	    sb.addSubBehaviour(new ReceiveMessage(this));
 	    addBehaviour(sb);
 	}
@@ -54,37 +55,42 @@ public class CarDealerAgent extends Agent implements CarsBase {
 		
 	}
 	
+	public void agentReply(String msg) {
+		System.out.println("[" + getLocalName() + "] - " + msg);
+	}
+	
 	// Behavior of register in
 	
-	 class RegisterIn extends OneShotBehaviour {
+	 class Register extends OneShotBehaviour {
 		 
-		RegisterIn(Agent a) {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -789328629369351006L;
+
+		Register(Agent a) {
 	         super(a);
 	    }
 
 		@Override
 		public void action() {
 			
+			DFAgentDescription dfa = new DFAgentDescription();
+			dfa.setName(getAID());
+
 			ServiceDescription sd = new ServiceDescription();
-			sd.setType(SERVER_AGENT);
-	        sd.setName(getName());
-	        sd.setOwnership("Test0332");
-	        DFAgentDescription dfd = new DFAgentDescription();
-	        dfd.setName(getAID());
-	        dfd.addServices(sd);
-	        try {
-	            DFAgentDescription[] dfds = DFService.search(myAgent, dfd);
-	            if (dfds.length > 0 ) {
-	               DFService.deregister(myAgent, dfd);
-	            }
-	            DFService.register(myAgent, dfd);
-	            System.out.println(getLocalName() + " is ready.");
-	         }
-	         catch (Exception ex) {
-	            System.out.println("Failed registering! Shutting down...");
-	            ex.printStackTrace();
-	            doDelete();
-	         }
+			sd.setType(getClass().getSimpleName());
+			sd.setName("(" + getLocalName() + ") - " + getClass().getSimpleName());
+			dfa.addServices(sd);
+
+			try {
+			DFService.register(myAgent, dfa);
+			} catch (FIPAException e) {
+			e.printStackTrace();
+			}
+			
+			agentReply("Service, sucessfouly registered...");
+			
 		}
 		 
 		 
@@ -95,6 +101,11 @@ public class CarDealerAgent extends Agent implements CarsBase {
 	
 	class ReceiveMessage extends CyclicBehaviour {
 		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -6909795550461669401L;
+
 		public ReceiveMessage (Agent a){
 			super(a);
 		}
@@ -147,6 +158,10 @@ public class CarDealerAgent extends Agent implements CarsBase {
 	
 	class HandleAvailable extends OneShotBehaviour {
 		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 4806091723978340335L;
 		private ACLMessage request;
 
 	      HandleAvailable(Agent a, ACLMessage request) {
@@ -161,7 +176,8 @@ public class CarDealerAgent extends Agent implements CarsBase {
 				
 				ContentElement content = getContentManager().extractContent(request);
 				Available av = (Available) ((Action)content).getAction();
-				AutoMobile am = new AutoMobile();
+				int test = 0;
+				AutoMobile am = new AutoMobile(test);
 				
 				av.setAID(getAID());
 				//am.setSerial();
@@ -177,6 +193,10 @@ public class CarDealerAgent extends Agent implements CarsBase {
 	
 	class HandleRentCar extends OneShotBehaviour {
 		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 2308553011038179027L;
 		private ACLMessage request;
 
 	      HandleRentCar(Agent a, ACLMessage request) {

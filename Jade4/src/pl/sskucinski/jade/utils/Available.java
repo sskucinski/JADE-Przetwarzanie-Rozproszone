@@ -12,6 +12,19 @@ public class Available implements Predicate {
 	AID aid;
 	AutoMobile am;
 	
+	public Available(AID aid, AutoMobile car) {
+		this.aid = aid;
+		this.am = car;
+	}
+	
+	public Available(AID aid) {
+		this.aid = aid;
+	}
+	
+	public Available(AutoMobile car) {
+		this.am = car;
+	}
+	
 	// Gets
 	
 	public AID getAID() {

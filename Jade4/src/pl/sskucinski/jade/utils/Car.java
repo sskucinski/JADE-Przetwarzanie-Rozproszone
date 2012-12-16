@@ -1,11 +1,15 @@
 package pl.sskucinski.jade.utils;
 
-public class Car extends AutoMobile{
+public class Car {
 	
 	private String brand;
 	private String model;
 	private String color;
 	private int year;
+	
+	public Car() {
+		
+	}
 	
 	// Gets
 	

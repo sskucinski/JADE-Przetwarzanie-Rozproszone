@@ -16,9 +16,11 @@ public interface CarsBase {
 	public static final String MILEAGE = "MileAge";
 	
 	public static final String AVAILABLE = "AvailableClass";
+	public static final String AID = "Aid";
 	
 	public static final String COST = "CostClass";
 	public static final String PRIZE = "Prize";
+	
 	
 	public static final String AUTOMOBILE = "AutoMobileClass";
 	public static final String SERIALID = "SerialID";
@@ -29,5 +31,8 @@ public interface CarsBase {
 	public static final String DATE = "Date";
 	
 	public static final String RENT = "RentClass";
+	
+	public static final String CATALOG = "CatalogClass";
+	public static final String CARS = "CarsList";
 
 }

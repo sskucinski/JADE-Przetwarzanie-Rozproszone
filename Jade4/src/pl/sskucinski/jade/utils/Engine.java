@@ -1,10 +1,20 @@
 package pl.sskucinski.jade.utils;
 
-public class Engine extends AutoMobile{
+import jade.content.Concept;
+
+public class Engine implements Concept {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1489144829020103489L;
 	private int capacity;
 	private int horsepower;
 	private int mileage;
+	
+	public Engine() {
+		
+	}
 	
 	// Gets
 	
